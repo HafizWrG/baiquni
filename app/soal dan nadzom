@@ -1,0 +1,263 @@
+const nadzomData = [
+  {
+    id: 1,
+    ar: "أَبْدَأُ بِالْحَمْدِ مُصَلِّياً عَلَى ... مُحَمَّدٍ خَيْرِ نَبِيٍّ أُرْسِلا",
+    tr: "Aku memulai dengan memuji (Allah) bershalawat atas Muhammad, sebaik-baik Nabi yang diutus.",
+    detail: "Penulis memulai dengan Hamdalah dan Shalawat mengikuti sunnah Kitabullah. Abuya menekankan pentingnya adab memulai ilmu dengan memuji Allah dan Rasul-Nya."
+  },
+  {
+    id: 2,
+    ar: "وَذِي مِنَ أقْسَامِ الحَدِيثِ عِدَّه ... وَكُلُّ وَاحِدٍ أَتَى وَحَدَّه",
+    tr: "Dan ini adalah sejumlah pembagian hadis, dan setiap bagian datang beserta definisinya.",
+    detail: "Isyarat bahwa manzhumah ini mencakup berbagai pembagian hadits (Hadits Dirayah). Setiap istilah akan dijelaskan batasan (Had) definisinya."
+  },
+  {
+    id: 3,
+    ar: "أَوَّلُهَا الصَّحِيحُ وَهْوَ مَا اتَّصَلْ ... إِسْنَادُهُ وَلَمْ يَشُذَّ أَوْ يُعَلْ",
+    tr: "Pertama adalah Shahih, yaitu yang bersambung sanadnya dan tidak syadz (janggal) atau ber-illat (cacat).",
+    detail: "Definisi Shahih: Ittishalus Sanad (Sanad bersambung), Ghairu Syadz (Tidak janggal), dan Ghairu Mu'allal (Tidak cacat samar)."
+  },
+  {
+    id: 4,
+    ar: "يَرْوِيهِ عَدْلٌ ضَابِطٌ عَنْ مِثْلِهِ ... مُعْتَمَدٌ فِي ضَبْطِهِ وَنَقْلِهِ",
+    tr: "Diriwayatkan oleh perawi adil dan dhabit dari yang semisalnya, yang diandalkan dalam kedhabitan dan penukilannya.",
+    detail: "Lanjutan syarat Shahih: Perawinya harus 'Adil (menjaga agama) dan Dhabit (hafalan kuat), dari awal sampai akhir sanad."
+  },
+  {
+    id: 5,
+    ar: "وَالْحَسَنُ الْمَعْرُوفُ طُرْقاً وَغَدَتْ ... رِجَالُهُ لاَ كَالصَّحِيحِ اشْتَهَرَتْ",
+    tr: "Dan Hasan adalah yang dikenal jalan periwayatannya, namun para perawinya tidak sepopuler perawi hadis shahih.",
+    detail: "Hadits Hasan memiliki sanad bersambung, adil, tidak syadz/illat, namun tingkat hafalan (Dhabit) perawinya sedikit di bawah Shahih."
+  },
+  {
+    id: 6,
+    ar: "وَكُلُّ مَا عَنْ رُتْبَةِ الحُسْنِ قَصُرْ ... فَهْوَ الضَّعِيفُ وَهُوَ أقْسَاماً كُثُرْ",
+    tr: "Dan setiap yang kurang dari tingkatan Hasan, maka itu adalah Dhaif, dan ia mempunyai banyak pembagian.",
+    detail: "Dhaif adalah hadits yang kehilangan salah satu syarat Shahih atau Hasan. Pembagiannya sangat banyak tergantung rukun yang hilang."
+  },
+  {
+    id: 7,
+    ar: "وَمَا أُضِيفَ لِلنَّبِي الْمَرْفُوعُ ... وَمَا لِتَابِعٍ هُوَ الْمَقْطُوعُ",
+    tr: "Apa yang disandarkan kepada Nabi adalah Marfu', dan yang disandarkan kepada Tabi'in adalah Maqthu'.",
+    detail: "Marfu': Disandarkan kepada Nabi ﷺ. Maqthu': Disandarkan kepada Tabi'in (ucapan atau perbuatan)."
+  },
+  {
+    id: 8,
+    ar: "وَالْمُسْنَدُ الْمُتَّصِلُ الْمَسْمُوعُ ... إِسْنَادُهُ مِنْ رَاوِيهِ حَتَّى الْمُصْطَفَى",
+    tr: "Musnad adalah yang bersambung dan didengar sanadnya dari perawinya hingga Al-Musthafa (Nabi).",
+    detail: "Musnad adalah hadits yang bersambung sanadnya dari perawi terakhir hingga Rasulullah ﷺ."
+  },
+  {
+    id: 9,
+    ar: "وَمَا بِسَمْعِ كُلِّ رَاوٍ يَتَّصِلْ ... إِسْنَادُهُ لِلْمُصْطَفَى فَالْمُتَّصِلْ",
+    tr: "Apa yang dengan pendengaran setiap perawi bersambung sanadnya kepada Al-Musthafa, maka itu Muttashil.",
+    detail: "Muttashil (Bersambung): Setiap perawi benar-benar mendengar langsung dari gurunya hingga akhir sanad."
+  },
+  {
+    id: 10,
+    ar: "مُسَلْسَلٌ قُلْ مَا عَلَى وَصْفٍ أَتَى ... مِثْلُ أَمَا وَاللهِ أَنْبَأَنِي الْفَتَى",
+    tr: "Musalsal katakanlah: apa yang datang dengan sifat tertentu, seperti: 'Ingatlah, demi Allah, pemuda itu memberitahuku'.",
+    detail: "Musalsal: Perawi bersepakat dalam satu kondisi atau ucapan saat meriwayatkan (Misal: bersalaman atau tersenyum)."
+  },
+  {
+    id: 11,
+    ar: "كَذَاكَ قَدْ حَدَّثَنِيهِ قَائِمَا ... أَوْ بَعْدَ أَنْ حَدَّثَنِي تَبَسَّمَا",
+    tr: "Begitu juga: 'Dia menceritakannya kepadaku sambil berdiri', atau 'setelah menceritakan padaku, dia tersenyum'.",
+    detail: "Lanjutan contoh Musalsal dalam keadaan fisik perawi (berdiri atau tersenyum)."
+  },
+  {
+    id: 12,
+    ar: "عَزِيزٌ مَرْوِيُّ اثْنَيْنِ أَوْ ثَلاَثَهْ ... مَشْهُورٌ مَرْوِيُّ فَوْقَ مَا ثَلاَثَهْ",
+    tr: "Aziz adalah yang diriwayatkan oleh dua atau tiga orang. Masyhur adalah yang diriwayatkan lebih dari tiga orang.",
+    detail: "Aziz: Tidak kurang dari 2 perawi di setiap tingkatan. Masyhur: Diriwayatkan 3 orang atau lebih namun belum mencapai Mutawatir."
+  },
+  {
+    id: 13,
+    ar: "مُعَنْعَنٌ كَعَن سَعِيدٍ عَنْ كَرَمْ ... وَمُبْهَمٌ مَا فِيهِ رَاوٍ لَمْ يُسَمْ",
+    tr: "Mu'an'an seperti 'Dari Sa'id dari Karam'. Dan Mubham adalah yang di dalamnya ada perawi tak bernama.",
+    detail: "Mu'an'an: Menggunakan lafaz 'An (dari). Mubham: Ada perawi yang tidak disebutkan namanya secara jelas."
+  },
+  {
+    id: 14,
+    ar: "وَكُلُّ مَا قَلَّتْ رِجَالُهُ عَلاَ ... وَضِدُّهُ ذَاكَ الَّذِي قَدْ نَزَلاَ",
+    tr: "Setiap yang sedikit jumlah perawinya, itu 'Ali (Tinggi). Dan lawannya adalah yang Nazil (Rendah).",
+    detail: "'Ali: Sanad pendek (jarak ke Nabi dekat). Nazil: Sanad panjang (jarak ke Nabi jauh)."
+  },
+  {
+    id: 15,
+    ar: "وَمَا أَضَفْتَهُ إِلَى الأَصْحَابِ مِنْ ... قَوْلٍ وَفِعْلٍ فَهْوَ مَوْقُوفٌ زُكِنْ",
+    tr: "Apa yang kau sandarkan kepada Sahabat berupa perkataan dan perbuatan, maka itu Mauquf, pahamilah.",
+    detail: "Mauquf: Hadits yang berhenti/disandarkan hanya sampai kepada Sahabat Nabi saja."
+  },
+  {
+    id: 16,
+    ar: "وَمُرْسَلٌ مِنْهُ الصَّحَابِيُّ سَقَطْ ... وَقُلْ غَرِيبٌ مَا رَوَى رَاوٍ فَقَطْ",
+    tr: "Murshal adalah yang gugur Sahabat darinya. Dan katakanlah Gharib untuk yang diriwayatkan satu orang saja.",
+    detail: "Mursal: Tabi'in langsung menyebutkan 'Rasulullah bersabda' (gugur Sahabat). Gharib: Hanya diriwayatkan 1 orang di salah satu tingkatan sanad."
+  },
+  {
+    id: 17,
+    ar: "وَكُلُّ مَا لَمْ يَتَّصِلْ بِحَالِ ... إِسْنَادُهُ مُنْقَطِعُ الأَوْصَالِ",
+    tr: "Setiap yang tidak bersambung sama sekali sanadnya, adalah Munqathi' (terputus) sendi-sendinya.",
+    detail: "Munqathi': Hadits yang sanadnya terputus, baik di tengah atau di mana saja (selain Mursal/Mu'dhal)."
+  },
+  {
+    id: 18,
+    ar: "وَالْمُعْضَلُ السَّاقِطُ مِنْهُ اثْنَانِ ... وَمَا أَتَى مُدَلَّساً نَوْعَانِ",
+    tr: "Mu'dhal adalah yang gugur darinya dua orang (berurut). Dan yang datang secara Mudallas ada dua jenis.",
+    detail: "Mu'dhal: Gugur 2 perawi atau lebih secara berurutan. Mudallas: Menyembunyikan cacat sanad."
+  },
+  {
+    id: 19,
+    ar: "الأَوَّلُ الإِسْقَاطُ لِلشَّيْخِ وَأَنْ ... يَنْقُلَ عَمَّنْ فَوْقَهُ بِعَنْ وَأَنْ",
+    tr: "Pertama: Menggugurkan guru dan menukil dari yang di atasnya dengan lafaz 'An' dan 'Anna'.",
+    detail: "Tadlis Isnad: Melewati guru langsung dan meriwayatkan dari guru di atasnya dengan lafaz yang menyamarkan."
+  },
+  {
+    id: 20,
+    ar: "وَالثَّانِ لاَ يُسْقِطُهُ لَكِنْ يَصِفْ ... أَوْصَافَهُ بِمَا بِهِ لاَ يَنْعَرِفْ",
+    tr: "Kedua: Tidak menggugurkannya, tapi menyifati sifat-sifatnya dengan yang tidak dikenal darinya.",
+    detail: "Tadlis Syuyukh: Menyebutkan guru dengan julukan/nama yang tidak populer agar tidak dikenali kelemahannya."
+  },
+  {
+    id: 21,
+    ar: "وَمَا يُخَالِفْ ثِقَةٌ فِيهِ الْمَلأ ... فَالشَّاذُّ وَالْمَقْلُوبُ قِسْمَانِ تَلا",
+    tr: "Apa yang seorang tsiqah menyelisih orang banyak, maka itu Syadz. Dan Maqlub ada dua bagian yang mengiringi.",
+    detail: "Syadz: Perawi tsiqah menyelisih riwayat orang-orang yang lebih tsiqah/banyak."
+  },
+  {
+    id: 22,
+    ar: "إِبْدَالُ رَاوٍ مَا بِرَاوٍ قِسْمُ ... وَقَلْبُ إِسْنَادٍ لِمَتْنٍ قِسْمُ",
+    tr: "Mengganti seorang perawi dengan perawi lain adalah satu bagian. Dan membalik sanad untuk suatu matan adalah satu bagian.",
+    detail: "Maqlub: Tertukarnya nama perawi atau tertukarnya sanad untuk matan yang berbeda."
+  },
+  {
+    id: 23,
+    ar: "وَالْفَرْدُ مَا قَيَّدْتَهُ بِثِقَةِ ... أَوْ جَمْعٍ أَوْ قَصْرٍ عَلَى رِوَايَةِ",
+    tr: "Dan Fard adalah apa yang kau batasi dengan orang tsiqah, atau jamaah atau pembatasan pada riwayat tertentu.",
+    detail: "Fard: Hadits yang kesendiriannya dibatasi pada perawi tertentu atau negeri tertentu."
+  },
+  {
+    id: 24,
+    ar: "وَمَا بِعِلَّةٍ غُمُوضٍ أَوْ خَفَا ... مُعَلَّلٌ عِنْدَهُمُ قَدْ عُرِفَا",
+    tr: "Dan apa yang memiliki cacat samar atau tersembunyi, dikenal di sisi mereka sebagai Mu'allal.",
+    detail: "Mu'allal: Hadits yang terlihat sehat tapi memiliki cacat tersembunyi yang hanya diketahui pakar."
+  },
+  {
+    id: 25,
+    ar: "وَذُو اخْتِلاَفِ سَنَدٍ أَوْ مَتْنِ ... مُضْطَرِبٌ عِنْدَ أُهَيْلِ الْفَنِّ",
+    tr: "Dan yang memiliki perbedaan sanad atau matan, adalah Mudhtharib menurut ahli hadis.",
+    detail: "Mudhtharib: Hadits yang diriwayatkan dengan berbagai cara yang berbeda dan sama-sama kuat sehingga membingungkan."
+  },
+  {
+    id: 26,
+    ar: "وَالْمُدْرَجَاتُ فِي الحَدِيثِ مَا أَتَتْ ... مِنْ بَعْضِ أَلْفَاظِ الرُّوَاةِ اتَّصَلَتْ",
+    tr: "Dan Mudrajat dalam hadis adalah yang datang dari sebagian lafaz perawi yang bersambung (dengan matan).",
+    detail: "Mudraj: Ada ucapan perawi yang masuk ke dalam teks hadits sehingga dikira bagian dari hadits."
+  },
+  {
+    id: 27,
+    ar: "وَمَا رَوَى كُلُّ قَرِينٍ عَنْ أَخِهْ ... مُدَبَّجٌ فَاعْرِفْهُ حَقًّا وَانْتَخِهْ",
+    tr: "Dan apa yang diriwayatkan setiap kawan dari saudaranya, adalah Mudabbaj, maka kenalilah dengan benar dan banggalah.",
+    detail: "Mudabbaj: Dua orang teman sebaya yang saling meriwayatkan satu sama lain."
+  },
+  {
+    id: 28,
+    ar: "مُتَّفِقٌ لَفْظاً وَخَطاً مُتَّفِقْ ... وَضِدُّهُ فِيمَا ذَكَرْنَا الْمُفْتَرِقْ",
+    tr: "Muttafiq adalah yang lafaz dan tulisannya sama. Dan lawannya dalam yang kami sebutkan adalah Muftariq.",
+    detail: "Muttafiq/Muftariq: Nama perawi sama secara tulisan dan sebutan, tapi orangnya berbeda."
+  },
+  {
+    id: 29,
+    ar: "مُؤْتَلِفٌ مُتَّفِقُ الخَطِّ فَقَطْ ... وَضِدُّهُ مُخْتَلِفُ فَاخْشَ الْغَلَطْ",
+    tr: "Mu'talif adalah yang sama tulisannya saja. Dan lawannya Mukhtalif, maka takutlah salah.",
+    detail: "Mu'talif/Mukhtalif: Tulisan nama sama, tapi cara membacanya berbeda (misal: Bazzar dan Bazzaz)."
+  },
+  {
+    id: 30,
+    ar: "وَالْمُنْكَرُ الْفَرْدُ بِهِ رَاوٍ غَدَا ... تَعْدِيلُهُ لاَ يَحْمِلُ التَّفَرُّدَا",
+    tr: "Dan Munkar adalah yang seorang perawi bersendiri dengannya, yang keadilannya tidak bisa menanggung kesendirian itu.",
+    detail: "Munkar: Hadits yang diriwayatkan perawi lemah yang menyalahi riwayat perawi tsiqah."
+  },
+  {
+    id: 31,
+    ar: "مَتْرُوكُهُ مَا وَاحِدٌ بِهِ انْفَرَدْ ... وَأَجْمَعُوا لِضَعْفِهِ فَهُوَ كَرَدْ",
+    tr: "Matruk adalah yang satu orang bersendiri dengannya, dan mereka sepakat atas kelemahannya, maka ia tertolak.",
+    detail: "Matruk: Hadits yang diriwayatkan oleh perawi yang tertuduh berdusta."
+  },
+  {
+    id: 32,
+    ar: "وَالْكَذِبُ الْمُخْتَلَقُ المَصْنُوعُ ... عَلَى النَّبِيِّ فَذَلِكَ الْمَوْضُوعُ",
+    tr: "Dan dusta yang direkayasa dan dibuat-buat atas nama Nabi, maka itulah Maudhu'.",
+    detail: "Maudhu': Hadits palsu yang dibuat-buat dan disandarkan kepada Nabi ﷺ."
+  },
+  {
+    id: 33,
+    ar: "وَقَدْ أَتَتْ كَالْجَوْهَرِ المَكْنُونِ ... سَمَّيْتُهَا مَنْظُومَةَ الْبَيْقُوني",
+    tr: "Dan ia telah datang bagaikan mutiara yang tersimpan, aku namakan ia Manzhumah Baiquni.",
+    detail: "Penutup: Penulis menamakan karyanya sebagai perhiasan ilmu bagi penuntut ilmu hadits."
+  },
+  {
+    id: 34,
+    ar: "فَوْقَ الثَّلاَثِينَ بِأَرْبَعٍ أَتَتْ ... أبيَاتُهَا تَمَّتْ بِخَيْرٍ خُتِمَتْ",
+    tr: "Ia datang lebih empat di atas tiga puluh (34 bait), bait telah sempurna, ditutup dengan kebaikan.",
+    detail: "Jumlah bait adalah 34. Selesai dengan memuji Allah atas taufiq-Nya."
+  }
+];
+
+const additionalQuestions = [
+    // --- KATEGORI: NADZOM (Sambung Ayat) ---
+    { type: "nadzom", question: "أكمل: وَمَا بِسَمْعِ كُلِّ رَاوٍ يَتَّصِلْ ...", options: ["إِسْنَادُهُ لِلْمُصْطَفَى فَالْمُتَّصِلْ", "فَذَاكَ مَقْطُوعٌ بِهِ قَدْ انْضَبَطْ", "إِسْنَادُهُ مُنْقَطِعُ الأَوْصَالِ"], answer: "إِسْنَادُهُ لِلْمُصْطَفَى فَالْمُتَّصِلْ" },
+    { type: "nadzom", question: "أكمل: عَزِيزٌ مَرْوِيُّ اثْنَيْنِ أَوْ ثَلاَثَهْ ...", options: ["مَشْهُورٌ مَرْوِيُّ فَوْقَ مَا ثَلاَثَهْ", "غَرِيبٌ مَرْوِيُّ رَاوٍ وَاحِدٍ", "مُسَلْسَلٌ مَا عَلَى وَصْفٍ أَتَى"], answer: "مَشْهُورٌ مَرْوِيُّ فَوْقَ مَا ثَلاَثَهْ" },
+    { type: "nadzom", question: "أكمل: وَمَا أَضَفْتَهُ إِلَى الأَصْحَابِ مِنْ ...", options: ["قَوْلٍ وَفِعْلٍ فَهْوَ مَوْقُوفٌ زُكِنْ", "قَوْلٍ وَفِعْلٍ فَهْوَ مَقْطُوعٌ زُكِنْ", "وَصْفٍ وَفِعْلٍ فَهْوَ مَرْفُوعٌ زُكِنْ"], answer: "قَوْلٍ وَفِعْلٍ فَهْوَ مَوْقُوفٌ زُكِنْ" },
+    { type: "nadzom", question: "أكمل: الأَوَّلُ الإِسْقَاطُ لِلشَّيْخِ وَأَنْ ...", options: ["يَنْقُلَ عَمَّنْ فَوْقَهُ بِعَنْ وَأَنْ", "يَصِفَ شَيْخَهُ بِمَا لاَ يَنْعَرِفْ", "يُسْقِطَ مَنْ فِي سَنَدٍ قَدْ انْحَذَفْ"], answer: "يَنْقُلَ عَمَّنْ فَوْقَهُ بِعَنْ وَأَنْ" },
+    { type: "nadzom", question: "أكمل: وَالثَّانِ لاَ يُسْقِطُهُ لَكِنْ يَصِفْ ...", options: ["أَوْصَافَهُ بِمَا بِهِ لاَ يَنْعَرِفْ", "أَحْوَالَهُ بِمَا بِهِ قَدْ يَتَّصِفْ", "أَسْمَاءَهُ بِحَيْثُ لاَ يَنْكَشِفْ"], answer: "أَوْصَافَهُ بِمَا بِهِ لاَ يَنْعَرِفْ" },
+    { type: "nadzom", question: "أكمل: إِبْدَالُ رَاوٍ مَا بِرَاوٍ قِسْمُ ...", options: ["وَقَلْبُ إِسْنَادٍ لِمَتْنٍ قِسْمُ", "وَتَرْكُ بَعْضٍ فِي الرِّوَايةِ وَسْمُ", "وَزَيْدُ لَفْظٍ فِي الْحَدِيثِ حُكْمُ"], answer: "وَقَلْبُ إِسْنَادٍ لِمَتْنٍ قِسْمُ" },
+    { type: "nadzom", question: "أكمل: وَذُو اخْتِلاَفِ سَنَدٍ أَوْ مَتْنِ ...", options: ["مُضْطَرِبٌ عِنْدَ أُهَيْلِ الْفَنِّ", "مُؤْتَلِفٌ عِنْدَ أُهَيْلِ الْفَنِّ", "مُخْتَلِفٌ عِنْدَ أُهَيْلِ الْفَنِّ"], answer: "مُضْطَرِبٌ عِنْدَ أُهَيْلِ الْفَنِّ" },
+    { type: "nadzom", question: "أكمل: وَمَا رَوَى كُلُّ قَرِينٍ عَنْ أَخِهْ ...", options: ["مُدَبَّجٌ فَاعْرِفْهُ حَقًّا وَانْتَخِهْ", "مُسَلْسَلٌ فَاعْرِفْهُ حَقًّا وَانْتَخِهْ", "مُؤْتَلِفٌ فَاعْرِفْهُ حَقًّا وَانْتَخِهْ"], answer: "مُدَبَّجٌ فَاعْرِفْهُ حَقًّا وَانْتَخِهْ" },
+    { type: "nadzom", question: "أكمل: مُتَّفِقٌ لَفْظاً وَخَطاً مُتَّفِقْ ...", options: ["وَضِدُّهُ فِيمَا ذَكَرْنَا الْمُفْتَرِقْ", "وَضِدُّهُ فِيمَا ذَكَرْنَا الْمُخْتَلِفْ", "وَعَكْسُهُ فِيمَا ذَكَرْنَا الْمُنْقَطِعْ"], answer: "وَضِدُّهُ فِيمَا ذَكَرْنَا الْمُفْتَرِقْ" },
+    { type: "nadzom", question: "أكمل: مُؤْتَلِفٌ مُتَّفِقُ الخَطِّ فَقَطْ ...", options: ["وَضِدُّهُ مُخْتَلِفُ فَاخْشَ الْغَلَطْ", "وَضِدُّهُ مُفْتَرِقُ فَاخْشَ الْغَلَطْ", "وَعَكْسُهُ مُبْهَمُ فَاخْشَ الْغَلَطْ"], answer: "وَضِدُّهُ مُخْتَلِفُ فَاخْشَ الْغَلَطْ" },
+    { type: "nadzom", question: "أكمل: وَالْمُنْكَرُ الْفَرْدُ بِهِ رَاوٍ غَدَا ...", options: ["تَعْدِيلُهُ لاَ يَحْمِلُ التَّفَرُّدَا", "تَوْثِيقُهُ لاَ يَمْنَعُ التَّفَرُّدَا", "ضَعِيفُهُ قَدْ أَوْجَبَ التَّفَرُّدَا"], answer: "تَعْدِيلُهُ لاَ يَحْمِلُ التَّفَرُّدَا" },
+    { type: "nadzom", question: "أكمل: مَتْرُوكُهُ مَا وَاحِدٌ بِهِ انْفَرَدْ ...", options: ["وَأَجْمَعُوا لِضَعْفِهِ فَهُوَ كَرَدْ", "وَلَمْ يَكُنْ لِغَيْرِهِ بِمُعْتَمَدْ", "وَقَدْ غَدَا لِوَهْنِهِ بِمُسْتَنَدْ"], answer: "وَأَجْمَعُوا لِضَعْفِهِ فَهُوَ كَرَدْ" },
+    { type: "nadzom", question: "أكمل: وَمَا بِسَمْعِ كُلِّ رَاوٍ يَتَّصِلْ ...", options: ["إِسْنَادُهُ لِلْمُصْطَفَى فَالْمُتَّصِلْ", "فَذَاكَ مَقْطُوعٌ بِهِ قَدْ انْضَبَطْ", "إِسْنَادُهُ مُنْقَطِعُ الأَوْصَالِ"], answer: "إِسْنَادُهُ لِلْمُصْطَفَى فَالْمُتَّصِلْ" },
+    { type: "nadzom", question: "أكمل: عَزِيزٌ مَرْوِيُّ اثْنَيْنِ أَوْ ثَلاَثَهْ ...", options: ["مَشْهُورٌ مَرْوِيُّ فَوْقَ مَا ثَلاَثَهْ", "غَرِيبٌ مَرْوِيُّ رَاوٍ وَاحِدٍ", "مُسَلْسَلٌ مَا عَلَى وَصْفٍ أَتَى"], answer: "مَشْهُورٌ مَرْوِيُّ فَوْقَ مَا ثَلاَثَهْ" },
+    { type: "nadzom", question: "أكمل: وَمَا أَضَفْتَهُ إِلَى الأَصْحَابِ مِنْ ...", options: ["قَوْلٍ وَفِعْلٍ فَهْوَ مَوْقُوفٌ زُكِنْ", "قَوْلٍ وَفِعْلٍ فَهْوَ مَقْطُوعٌ زُكِنْ", "وَصْفٍ وَفِعْلٍ فَهْوَ مَرْفُوعٌ زُكِنْ"], answer: "قَوْلٍ وَفِعْلٍ فَهْوَ مَوْقُوفٌ زُكِنْ" },
+    { type: "nadzom", question: "أكمل: الأَوَّلُ الإِسْقَاطُ لِلشَّيْخِ وَأَنْ ...", options: ["يَنْقُلَ عَمَّنْ فَوْقَهُ بِعَنْ وَأَنْ", "يَصِفَ شَيْخَهُ بِمَا لاَ يَنْعَرِفْ", "يُسْقِطَ مَنْ فِي سَنَدٍ قَدْ انْحَذَفْ"], answer: "يَنْقُلَ عَمَّنْ فَوْقَهُ بِعَنْ وَأَنْ" },
+    { type: "nadzom", question: "أكمل: وَالثَّانِ لاَ يُسْقِطُهُ لَكِنْ يَصِفْ ...", options: ["أَوْصَافَهُ بِمَا بِهِ لاَ يَنْعَرِفْ", "أَحْوَالَهُ بِمَا بِهِ قَدْ يَتَّصِفْ", "أَسْمَاءَهُ بِحَيْثُ لاَ يَنْكَشِفْ"], answer: "أَوْصَافَهُ بِمَا بِهِ لاَ يَنْعَرِفْ" },
+    { type: "nadzom", question: "أكمل: إِبْدَالُ رَاوٍ مَا بِرَاوٍ قِسْمُ ...", options: ["وَقَلْبُ إِسْنَادٍ لِمَتْنٍ قِسْمُ", "وَتَرْكُ بَعْضٍ فِي الرِّوَايةِ وَسْمُ", "وَزَيْدُ لَفْظٍ فِي الْحَدِيثِ حُكْمُ"], answer: "وَقَلْبُ إِسْنَادٍ لِمَتْنٍ قِسْمُ" },
+    { type: "nadzom", question: "أكمل: وَذُو اخْتِلاَفِ سَنَدٍ أَوْ مَتْنِ ...", options: ["مُضْطَرِبٌ عِنْدَ أُهَيْلِ الْفَنِّ", "مُؤْتَلِفٌ عِنْدَ أُهَيْلِ الْفَنِّ", "مُخْتَلِفٌ عِنْدَ أُهَيْلِ الْفَنِّ"], answer: "مُضْطَرِبٌ عِنْدَ أُهَيْلِ الْفَنِّ" },
+    { type: "nadzom", question: "أكمل: وَالْمُدْرَجَاتُ فِي الحَدِيثِ مَا أَتَتْ ...", options: ["مِنْ بَعْضِ أَلْفَاظِ الرُّوَاةِ اتَّصَلَتْ", "مِنْ قَوْلِ بَعْضِ التَّابِعِينَ نُقِلَتْ", "فِي آخِرِ الْمَتْنِ وَقَدْ تَفَصَّلَتْ"], answer: "مِنْ بَعْضِ أَلْفَاظِ الرُّوَاةِ اتَّصَلَتْ" },
+    { type: "nadzom", question: "أكمل: وَمَا رَوَى كُلُّ قَرِينٍ عَنْ أَخِهْ ...", options: ["مُدَبَّجٌ فَاعْرِفْهُ حَقًّا وَانْتَخِهْ", "مُسَلْسَلٌ فَاعْرِفْهُ حَقًّا وَانْتَخِهْ", "مُؤْتَلِفٌ فَاعْرِفْهُ حَقًّا وَانْتَخِهْ"], answer: "مُدَبَّجٌ فَاعْرِفْهُ حَقًّا وَانْتَخِهْ" },
+    { type: "nadzom", question: "أكمل: مُتَّفِقٌ لَفْظاً وَخَطاً مُتَّفِقْ ...", options: ["وَضِدُّهُ فِيمَا ذَكَرْنَا الْمُفْتَرِقْ", "وَضِدُّهُ فِيمَا ذَكَرْنَا الْمُخْتَلِفْ", "وَعَكْسُهُ فِيمَا ذَكَرْنَا الْمُنْقَطِعْ"], answer: "وَضِدُّهُ فِيمَا ذَكَرْنَا الْمُفْتَرِقْ" },
+    { type: "nadzom", question: "أكمل: مُؤْتَلِفٌ مُتَّفِقُ الخَطِّ فَقَطْ ...", options: ["وَضِدُّهُ مُخْتَلِفُ فَاخْشَ الْغَلَطْ", "وَضِدُّهُ مُفْتَرِقُ فَاخْشَ الْغَلَطْ", "وَعَكْسُهُ مُبْهَمُ فَاخْشَ الْغَلَطْ"], answer: "وَضِدُّهُ مُخْتَلِفُ فَاخْشَ الْغَلَطْ" },
+    { type: "nadzom", question: "أكمل: وَالْمُنْكَرُ الْفَرْدُ بِهِ رَاوٍ غَدَا ...", options: ["تَعْدِيلُهُ لاَ يَحْمِلُ التَّفَرُّدَا", "تَوْثِيقُهُ لاَ يَمْنَعُ التَّفَرُّدَا", "ضَعِيفُهُ قَدْ أَوْجَبَ التَّفَرُّدَا"], answer: "تَعْدِيلُهُ لاَ يَحْمِلُ التَّفَرُّدَا" },
+    { type: "nadzom", question: "أكمل: مَتْرُوكُهُ مَا وَاحِدٌ بِهِ انْفَرَدْ ...", options: ["وَأَجْمَعُوا لِضَعْفِهِ فَهُوَ كَرَدْ", "وَلَمْ يَكُنْ لِغَيْرِهِ بِمُعْتَمَدْ", "وَقَدْ غَدَا لِوَهْنِهِ بِمُسْتَنَدْ"], answer: "وَأَجْمَعُوا لِضَعْفِهِ فَهُوَ كَرَدْ" },
+    { type: "nadzom", question: "أكمل: وَقَدْ أَتَتْ كَالْجَوْهَرِ المَكْنُونِ ...", options: ["سَمَّيْتُهَا مَنْظُومَةَ الْبَيْقُوني", "أَبْيَاتُهَا تَمَّتْ بِنُورِ الْعَيْنِ", "فَوْقَ الثَّلاَثِينَ بِأَرْبَعٍ تَبِينْ"], answer: "سَمَّيْتُهَا مَنْظُومَةَ الْبَيْقُوني" },
+    { type: "nadzom", question: "أكمل: فَوْقَ الثَّلاَثِينَ بِأَرْبَعٍ أَتَتْ ...", options: ["أبيَاتُهَا تَمَّتْ بِخَيْرٍ خُتِمَتْ", "أبْوَابُهَا بِالْعِلْمِ قَدْ تَعَطَّرَتْ", "أَلْفَاظُهَا بِالْحَقِّ قَدْ تَجَمَّلَتْ"], answer: "أبيَاتُهَا تَمَّتْ بِخَيْرٍ خُتِمَتْ" },
+    { type: "tarif", question: "Apa definisi Hadits Mudabbaj?", options: ["Riwayat antara teman sebaya (قرين عن أخيه)", "Riwayat ayah dari anaknya", "Riwayat guru dari muridnya"], answer: "Riwayat antara teman sebaya (قرين عن أخيه)" },
+    { type: "tarif", question: "Hadits yang memiliki cacat yang sangat halus dan tersembunyi disebut:", options: ["Mu'allal (معلل)", "Mudraj (مدرج)", "Munkar (منكر)"], answer: "Mu'allal (معلل)" },
+    { type: "tarif", question: "Hadits Maqlub adalah hadits yang mengalami:", options: ["Pertukaran nama perawi atau sanad", "Penambahan kata di akhir matan", "Pemutusan sanad di tengah"], answer: "Pertukaran nama perawi atau sanad" },
+    { type: "tarif", question: "Definisi Hadits Mudhtharib adalah hadits yang diriwayatkan dengan:", options: ["Perselisihan pada sanad atau matan", "Tambahan dari perawi tsiqah", "Sanad yang sangat pendek"], answer: "Perselisihan pada sanad atau matan" },
+    { type: "tarif", question: "Apa perbedaan Muttafiq & Muftariq menurut bait 28?", options: ["Sama nama dan tulisan, beda orang", "Sama tulisan, beda cara baca", "Sama orang, beda julukan"], answer: "Sama nama dan tulisan, beda orang" },
+    { type: "tarif", question: "Hadits yang diriwayatkan oleh perawi yang tertuduh dusta disebut:", options: ["Matruk (متروك)", "Maudhu' (موضوع)", "Munkar (منكر)"], answer: "Matruk (متروك)" },
+    { type: "tarif", question: "Apa rukun dari Hadits Aziz?", options: ["Diriwayatkan minimal oleh 2 orang", "Diriwayatkan hanya oleh 1 orang", "Diriwayatkan minimal oleh 10 orang"], answer: "Diriwayatkan minimal oleh 2 orang" },
+    { type: "tarif", question: "Hadits yang sanadnya bersambung sampai akhir disebut:", options: ["Muttashil", "Munqathi'", "Mu'allaq"], answer: "Muttashil" },
+    { type: "tarif", question: "Jika seorang perawi membuang gurunya dan mengambil dari guru di atasnya dengan lafadz 'An', disebut:", options: ["Tadlis Isnad", "Tadlis Syuyukh", "Tadlis Taswiyah"], answer: "Tadlis Isnad" },
+    { type: "tarif", question: "Hadits yang di dalamnya ada perawi yang tidak disebutkan namanya (mubham) disebut:", options: ["Hadits Mubham", "Hadits Mudallas", "Hadits Mu'an'an"], answer: "Hadits Mubham" },
+    { type: "tarif", question: "Hadits Munkar menurut Al-Baiquni adalah kesendirian perawi yang:", options: ["Keadilannya tidak kuat menanggung kesendirian", "Sangat tsiqah hafalannya", "Memiliki banyak jalur periwayatan"], answer: "Keadilannya tidak kuat menanggung kesendirian" },
+    { type: "tarif", question: "Berapa jumlah pasti bait Manzhumah Al-Baiquniyah?", options: ["34 Bait", "33 Bait", "35 Bait"], answer: "34 Bait" },
+    { type: "tarif", question: "Apa sebutan untuk hadits yang disandarkan kepada Tabi'in?", options: ["Maqthu'", "Mauquf", "Marfu'"], answer: "Maqthu'" },
+    { type: "tarif", question: "Hadits yang diriwayatkan oleh banyak orang (lebih dari 3) tapi tidak mencapai Mutawatir disebut:", options: ["Masyhur", "Aziz", "Gharib"], answer: "Masyhur" },
+    { type: "tarif", question: "Hadits yang sanadnya paling pendek/sedikit jumlah perawinya disebut:", options: ["'Ali (علا)", "Nazil (نزل)", "Musnad"], answer: "'Ali (علا)" },
+    { type: "tarif", question: "Hadits yang sanadnya bersambung sampai ke Nabi SAW disebut sebagai hadits:", options: ["Muttashil", "Munqathi'", "Mu'allaq"], answer: "Muttashil" },
+    { type: "tarif", question: "Apabila seorang perawi menyebut 'Seseorang memberitahuku' tanpa menyebutkan namanya, maka hadits ini disebut:", options: ["Mubham", "Mu'an'an", "Mudallas"], answer: "Mubham" },
+    { type: "tarif", question: "Hadits yang diriwayatkan oleh perawi tsiqah dengan menyendiri, namun keadilannya tidak sanggup menanggung kesendirian itu menurut Al-Baiquni adalah:", options: ["Munkar", "Gharib", "Syadz"], answer: "Munkar" },
+    { type: "tarif", question: "Bentuk tadlis di mana perawi menyebut gurunya dengan julukan yang tidak dikenal agar tidak ketahuan lemahnya disebut:", options: ["Tadlis Syuyukh", "Tadlis Isnad", "Tadlis Taswiyah"], answer: "Tadlis Syuyukh" },
+    { type: "tarif", question: "Hadits yang di dalam matannya terdapat tambahan ucapan perawi yang dikira bagian dari sabda Nabi disebut:", options: ["Mudraj", "Maqlub", "Mudhtharib"], answer: "Mudraj" },
+    { type: "tarif", question: "Perbedaan antara Muttafiq-Muftariq dengan Mu'talif-Mukhtalif terletak pada:", options: ["Cara pengucapannya (Lafadz)", "Jumlah perawinya", "Keaslian matannya"], answer: "Cara pengucapannya (Lafadz)" },
+    { type: "tarif", question: "Hadits Aziz minimal diriwayatkan oleh berapa orang di setiap tingkatan sanad?", options: ["2 Orang", "3 Orang", "1 Orang"], answer: "2 Orang" },
+    { type: "tarif", question: "Apa tujuan utama Abuya Sayyid Muhammad Al-Maliki menulis Qowaidul Asasiyah?", options: ["Meletakkan kaidah dasar memahami hadits", "Menghafal seluruh sanad hadits", "Menghitung jumlah hadits shahih"], answer: "Meletakkan kaidah dasar memahami hadits" },
+    { type: "tarif", question: "Hadits yang sanadnya berantakan/berbeda-beda dan tidak bisa dikuatkan salah satunya disebut:", options: ["Mudhtharib", "Mu'allal", "Maqlub"], answer: "Mudhtharib" },
+    { type: "tarif", question: "Hadits yang diriwayatkan oleh perawi yang tertuduh dusta dan disepakati kelemahannya adalah:", options: ["Matruk", "Maudhu'", "Dhaif"], answer: "Matruk" }
+
+];
